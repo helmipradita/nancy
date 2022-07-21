@@ -12,6 +12,17 @@ class ProductController extends Controller
         $this->middleware('auth');
     } 
 
+    public function showOne()
+    {
+        return view('products', [
+            "title" => "Semua Produk",
+            "products" => Product::all(),
+            // // "products" => Product::latest()->filter(request(['search', 'category', 'author']))->paginate(7)->withQueryString(),
+            // 'kecamatan' => $this->WebModel->DataKecamatan(),
+            // 'categories' => Category::all()
+        ]);
+    }
+
     public function index()
     {
         return view('dashboard.products.index', [
